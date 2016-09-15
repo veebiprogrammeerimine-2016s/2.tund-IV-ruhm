@@ -23,7 +23,27 @@
 		
 	}
 	
+	$signupPasswordError = "*";
 	
+	if (isset ($_POST["signupPassword"])) {
+		
+		if (empty ($_POST["signupPassword"])) {
+			
+			$signupPasswordError = "* Väli on kohustuslik!";
+			
+		} else {
+			
+			// parool ei olnud tühi
+			
+			if ( strlen($_POST["signupPassword"]) < 8 ) {
+				
+				$signupPasswordError = "* Parool peab olema vähemalt 8 tähemärkki pikk!";
+				
+			}
+			
+		}
+		
+	}
 	
 	
 	
@@ -64,7 +84,7 @@
 			
 			<br><br>
 
-			<input name="signupPassword" placeholder="Parool" type="password">
+			<input name="signupPassword" placeholder="Parool" type="password"> <?php echo $signupPasswordError; ?>
 			
 			<br><br>
 			
